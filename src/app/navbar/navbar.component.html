@@ -1,0 +1,28 @@
+<nav class="header">
+    <div class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Just To-Do</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <!-- middle header --> 
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/home"  routerLinkActive="active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/to-do" routerLinkActive="active">To-Do</a>
+                </li>
+
+            </ul>
+
+            <!-- right header --> 
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login" (click)="toggleLoginLogout()">{{ isLoggedIn() ? 'Logout' : 'Login' }}</button>
+            </form>
+        </div>
+    </div>
+</nav>
+

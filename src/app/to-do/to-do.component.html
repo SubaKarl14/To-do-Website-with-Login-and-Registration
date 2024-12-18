@@ -1,0 +1,94 @@
+<div class="ctn d-flex justify-content-center">
+  <div class="example-container ">
+    <div class="to-do-container d-flex ">
+        <!-- FOR TO DO.. -->
+      <h2>To Do</h2>
+      <img (click)="openAddTodoDialog()" src="/assets/plus.png" alt="Add Task" class="to-do-img">
+    </div>
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[inProgressList, onHoldList, doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of todo" cdkDrag class="example-box ">
+        <div>
+        <strong>{{ item.title | uppercase }}</strong>
+        <button class="remove-btn" (click)="removeTask(item, 'todo')"><img src="/assets/remove.png" alt=""></button> 
+        </div>
+        <p>{{ item.description }}</p>
+        <small>{{ item.date }}</small>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FOR IN PROGRESS.. -->
+  <div class="example-container">
+    <h2>In Progress</h2>
+    <div
+      cdkDropList
+      #inProgressList="cdkDropList"
+      [cdkDropListData]="inProgress"
+      [cdkDropListConnectedTo]="[todoList, onHoldList, doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of inProgress" cdkDrag class="example-box">
+        <div>
+        <strong>{{ item.title | uppercase }}</strong>
+        <button class="remove-btn" (click)="removeTask(item, 'inProgress')"><img src="/assets/remove.png" alt=""></button> 
+        </div>
+        <p>{{ item.description }}</p>
+        <small>{{ item.date }}</small>
+        
+      </div>
+    </div>
+  </div>
+
+   <!-- FOR ON HOLD.. -->
+  <div class="example-container">
+    <h2>On Hold</h2>
+    <div
+      cdkDropList
+      #onHoldList="cdkDropList"
+      [cdkDropListData]="onHold"
+      [cdkDropListConnectedTo]="[todoList, inProgressList, doneList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of onHold" cdkDrag class="example-box">
+        <div>
+        <strong>{{ item.title | uppercase }}</strong>
+        <button class="remove-btn" (click)="removeTask(item, 'onHold')"><img src="/assets/remove.png" alt=""></button> 
+        </div>
+        <p>{{ item.description }}</p>
+        <small>{{ item.date }}</small>
+        
+      </div>
+    </div>
+  </div>
+
+  
+   <!-- FOR DONE.. -->
+  <div class="example-container">
+    <h2>Done</h2>
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList, inProgressList, onHoldList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div *ngFor="let item of done" cdkDrag class="example-box">
+        <div>
+        <strong>{{ item.title | uppercase }}</strong>
+        <button class="remove-btn" (click)="removeTask(item, 'done')"><img src="/assets/remove.png" alt=""></button> 
+        </div>
+        <p>{{ item.description }}</p>
+        <small>{{ item.date }}</small>
+      </div>
+    </div>
+  </div>
+
+</div>
